@@ -3,7 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using prueba.Data;
 
 var url = Environment.GetEnvironmentVariable("ConnectionStrings__pruebaContext");
-Console.WriteLine($"CONN: {url}");
+Console.WriteLine($"Coneccion actual: {url}");
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<pruebaContext>(options =>
     options.UseNpgsql(url));
