@@ -3,7 +3,6 @@ using Microsoft.Extensions.DependencyInjection;
 using prueba.Data;
 
 var url = Environment.GetEnvironmentVariable("DATABASE_URL");
-Console.WriteLine($"Coneccion actual: {url}");
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<pruebaContext>(options =>
     options.UseNpgsql(url));
@@ -28,9 +27,6 @@ using (var scope = app.Services.CreateScope())
 
 app.UseSwagger();
 app.UseSwaggerUI();
-
 app.UseAuthorization();
-
 app.MapControllers();
-
 app.Run();
