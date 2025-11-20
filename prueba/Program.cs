@@ -1,9 +1,11 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using prueba.Data;
+
+var url = Environment.GetEnvironmentVariable("ConnectionStringPruebaContext");
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<pruebaContext>(options =>
-    options.UseNpgsql(builder.Configuration.GetConnectionString("pruebaContext") ?? throw new InvalidOperationException("Connection string 'pruebaContext' not found.")));
+    options.UseNpgsql(url));
 
 // Add services to the container.
 builder.WebHost.UseUrls("http://0.0.0.0:8080");
